@@ -576,6 +576,20 @@ declare const angular: any;
         }
 
         container.on('scroll', onScroll);
+        window.addEventListener('keydown', function (event) {
+          if (document.activeElement !== document.body) {
+            return
+          }
+          if (event.which == 33) { // page up        
+            event.preventDefault();
+            container.scrollTop(container.scrollTop() - container.innerHeight());
+          }
+          else if (event.which == 34) { // page down      
+            event.preventDefault();
+            container.scrollTop(container.scrollTop() + container.innerHeight());
+          }
+        });
+
       }
     };
   }]);
